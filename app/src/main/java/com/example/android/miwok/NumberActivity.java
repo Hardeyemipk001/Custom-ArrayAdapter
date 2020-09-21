@@ -23,7 +23,7 @@ public class NumberActivity extends AppCompatActivity {
         setContentView(R.layout.activity_number);
         ArrayList<Word> words = new ArrayList <Word>();
 
-        // words.add("one");
+
         words.add(new Word("One","lutti"));
         words.add(new Word("Two","otiiko"));
         words.add(new Word("Three","tolookosu"));
