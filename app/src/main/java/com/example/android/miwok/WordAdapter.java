@@ -20,7 +20,7 @@ public class WordAdapter extends ArrayAdapter<Word> {
         super(context, 0, words);
     }
 
-    @Override
+    @Override 
     public View getView(int position, View convertView, ViewGroup parent) {
         // Check if the existing view is being reused, otherwise inflate the view
         View listItemView = convertView;
@@ -45,10 +45,19 @@ public class WordAdapter extends ArrayAdapter<Word> {
        defaultTextView.setText(currentWord.getmMiwokTranslation());
 
         // Find the ImageView in the list_item.xml layout with the ID list_item_icon
-        ImageView iconView = (ImageView) listItemView.findViewById(R.id.image);
+        ImageView imageView = (ImageView) listItemView.findViewById(R.id.image);
+        if(currentWord.hasImage()) {
+            // set the imageview to the resource specified in the current word
+            imageView.setImageResource((currentWord.getImageResourceId()));
+            // make sure the view is visible
+            imageView.setVisibility(View.VISIBLE);
+        }
+        else  {
+            // Otherwise hide the ImageView (Set visibility to GONE)
+            imageView.setVisibility(View.GONE);
+        }
         // Get the image resource ID from the current AndroidFlavor object and
-        // set the image to iconView
-        iconView.setImageResource(currentWord.getImageResourceId());
+
 
         // Return the whole list item layout (containing 2 TextViews and an ImageView)
         // so that it can be shown in the ListView
